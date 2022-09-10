@@ -1,9 +1,6 @@
-import React from "react";
-import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import Footer from "../Footer";
 import { useSelector } from "react-redux";
 import { db } from "../../firebase";
@@ -23,6 +20,7 @@ export default function Product() {
       setProduct(await response.json());
       setLoading(false);
     };
+
     getProduct();
   }, [id]);
 
@@ -31,7 +29,7 @@ export default function Product() {
     if (activeUser.id) {
       db.collection("users").doc(activeUser.id).collection("cart").add({
         product: product,
-        timestamp: firebase.firestore.FieldValue.serverTimeStamp(),
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       });
     } else {
       navigate("/login");
