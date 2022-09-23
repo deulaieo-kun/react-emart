@@ -13,7 +13,7 @@ import * as actionUser from "../redux/actions/actionUser";
 import { bindActionCreators } from "redux";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { Spinner } from "react-spinkit";
+import Spinner from "react-spinkit";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
 
